@@ -48,6 +48,7 @@
     --ring: 217.2 32.6% 17.5%;
   }
 
+
   /* This is what needs border-border to exist */
   * { @apply border-border; }
   body { @apply bg-background text-foreground; }
