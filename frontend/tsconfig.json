@@ -8,9 +8,16 @@
       "path": "./tsconfig.node.json"
     }
   ],
+  
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]    }
+    "module": "ESNext",
+    "moduleResolution": "Bundler",   // or "NodeNext"
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "types": ["vite/client", "node"],  // <- important
+    "strict": true,
+    "jsx": "react-jsx"
   }
 }
+
+
