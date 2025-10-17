@@ -1,9 +1,10 @@
 // /frontend/src/routes/expenses.detail.tsx
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "@tanstack/react-router";
+import { UploadExpenseForm } from "../components/UploadExpenseForm";
 
-type Expense = { id: number; title: string; amount: number };
-const API = "http://localhost:3000/api"; // or '/api' if you use a proxy
+type Expense = { id: number; title: string; amount: number; fileUrl?: string };
+const API = "/api"; // or '/api' if you use a proxy
 
 export default function ExpenseDetailPage() {
   const { id } = useParams({ from: "/expenses/$id" });
@@ -44,6 +45,20 @@ export default function ExpenseDetailPage() {
         <h2 className="text-xl font-semibold">{item.title}</h2>
         <p className="mt-2 text-sm text-muted-foreground">Amount</p>
         <p className="text-lg tabular-nums">${item.amount}</p>
+        {item.fileUrl && (
+          <a
+            href={item.fileUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="underline"
+          >
+            Download Receipt
+          </a>
+        )}
+        <UploadExpenseForm
+          expenseId={item.id}
+          onUpload={() => window.location.reload()}
+        />
       </div>
     </section>
   );

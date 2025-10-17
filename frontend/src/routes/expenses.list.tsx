@@ -5,8 +5,8 @@ import { Link } from "@tanstack/react-router";
 export type Expense = { id: number; title: string; amount: number };
 
 // Use "/api" if you configured a Vite proxy in dev; otherwise use
-const API = "http://localhost:3000/api";
-// const API = "/api";
+// const API = "http://localhost:3000/api";
+const API = "/api";
 
 export default function ExpensesListPage() {
   const { data, isLoading, isError, error, refetch, isFetching } = useQuery({
